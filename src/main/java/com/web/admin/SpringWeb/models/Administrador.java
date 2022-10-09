@@ -60,7 +60,9 @@ public class Administrador {
     }
 
     public String getSenha() {
-        return senha;
+        // return senha;
+        // Se quisermos colocar os caracteres da senha com um asterisco '*' para exibir no template, podemos fazer:
+        return senha.substring(0, 3) + "****"; // Aqui ele mostra 3 caracteres da senha e depois o resto fica com asterisco.
     }
 
     public void setSenha(String senha) {
