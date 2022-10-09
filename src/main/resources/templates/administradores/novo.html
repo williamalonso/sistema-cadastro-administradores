@@ -1,0 +1,38 @@
+<!-- Topo -->
+<div th:replace="compartilhado/topo"></div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Novo Administrador</h1>
+                    <p class="mb-4">Aqui você pode inserir os administradores do seu sistema</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4 p-3">
+                        <form method="POST" action="/administradores/criar" onsubmit="return confirm('Confirma ação')"> <!-- o onSubmit vai abrir janela de confirmação -->
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required> <!-- Precisamos colocar o "name=" para conseguir enviar os dados para o Controller-->
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required> <!-- Precisamos colocar o "name=" para conseguir enviar os dados para o Controller-->
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" required> <!-- Precisamos colocar o "name=" para conseguir enviar os dados para o Controller-->
+                            </div>
+                            <div class="mb-3">
+                                <label for="observacao" class="form-label">Observação</label>
+                                <textarea class="form-control" id="observacao" name="observacao"></textarea> <!-- Precisamos colocar o "name=" para conseguir enviar os dados para o Controller-->
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- End Content -->
+
+<!-- Footer -->
+<div th:replace="compartilhado/baixo"></div>
