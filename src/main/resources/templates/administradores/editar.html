@@ -1,0 +1,42 @@
+<!-- Topo -->
+<div th:replace="compartilhado/topo"></div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Editar Administrador</h1>
+                    <p class="mb-4">Aqui você pode editar o administrador do seu sistema</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4 p-3">
+                        <form method="POST" th:action="@{ '/administradores/' + ${administrador.id} + '/atualizar' }"> <!-- Aqui estmos usando o th:action ao invés só do 'action' pois estamos passando 'id' -->
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required th:value="${administrador.nome}">
+                                <!-- O th:value traz o valor do Banco -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required th:value="${administrador.email}">
+                                <!-- O th:value traz o valor do Banco -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" required th:value="${administrador.senha}">
+                                <!-- O th:value traz o valor do Banco -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="observacao" class="form-label">Observação</label>
+                                <textarea class="form-control" id="observacao" name="observacao" th:inline="text">[[${administrador.observacao}]]</textarea>
+                                <!-- O th:value aqui vai ser o th:inline -->
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- End Content -->
+
+<!-- Footer -->
+<div th:replace="compartilhado/baixo"></div>
