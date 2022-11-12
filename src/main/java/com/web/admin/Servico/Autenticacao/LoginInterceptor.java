@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     (HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         
         try {
-            if( CookieService.getCookie(request, "usuario") != null ) { // se o meu cookie for diferente de null, permite o usuário acessar o sistema
+            if( CookieService.getCookie(request, "usuarioId") != null ) { // se o meu cookie for diferente de null, permite o usuário acessar o sistema
                 return true;
             }
         }
