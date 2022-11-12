@@ -42,7 +42,7 @@
                                             <td th:text="${adm.id}"></td>
                                             <td th:text="${adm.nome}"></td>
                                             <td th:text="${adm.email}"></td>
-                                            <td><a href="#" th:href="@{ '/administradores/' + ${adm.id} + '/buscar' }" class="btn btn-warning">Alterar</a></td>
+                                            <td><a th:href="@{ '/administradores/' + ${adm.id} + '/buscar' }" class="btn btn-warning">Alterar</a></td>
                                             <td><a href="#" th:onclick="| if(confirm('Confirma?')){ window.location.href='/administradores/${adm.id}/excluir' } |" class="btn btn-danger">Excluir</a></td> <!-- Outra forma de escrever seria th:onclick="'window.location.href = \'' + @{/administradores/{id}(id=${adm.id})} + '/excluir\''" -->
                                             <td th:text="${adm.senha}"></td>
                                         </tr>

@@ -1,8 +1,12 @@
 package com.web.admin.SpringWeb.controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.web.admin.Servico.CookieService;
 import com.web.admin.SpringWeb.models.Administrador;
 import com.web.admin.SpringWeb.repositorio.AdministradoresRepo;
 
@@ -24,11 +28,12 @@ public class AdministradoresController {
 
 
     @RequestMapping("/administradores") // quando a url for '/administradores'. Também poderia ser @GetMapping
-    public String index(Model model) { //esse "Model model" faz com que a gente possa adicionar dados que vamos enviar para nosso template html
+    public String index(Model model, HttpServletRequest request) throws UnsupportedEncodingException { //esse "Model model" faz com que a gente possa adicionar dados que vamos enviar para nosso template html
 
         List<Administrador> administradores = (List<Administrador>)repo.findAll(); // a variável "administradores" é do tipo List, ou seja, na verdade é uma lista e não variável, e busca todos os dados do Banco. O "List<Administrador>" na direita é um casting para ele trazer os resultados de findAll() e converter para o tipo List.
 
         model.addAttribute("administradores", administradores); // O primeiro atributo "administradores" é o atributo que vamos enviar para o html. O segundo parâmetro que vamos enviar é uma lista com os dados do Banco
+        model.addAttribute("nome", CookieService.getCookie(request, "nomeUsuario"));
 
         return "administradores/index";
     }
@@ -66,7 +71,7 @@ public class AdministradoresController {
             return "redirect:/administradores";
 
         }
-        return "redirect:/administradores";
+        return "/administradores/editar"; // retorna para o html editar.html na pasta "administradores"
     }
     
     // Função que atualiza um ID no Banco
