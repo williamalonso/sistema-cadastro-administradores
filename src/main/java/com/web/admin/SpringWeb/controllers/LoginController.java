@@ -51,8 +51,9 @@ public class LoginController {
     }
 
     @GetMapping("/sair") // quando clicar para sair do sistema
-    public String logar(HttpServletResponse response) throws IOException { // esse response traz as informações dos meus Cookies
+    public String sair(HttpServletResponse response) throws IOException { // esse response traz as informações dos meus Cookies
         CookieService.setCookie(response, "usuarioId", "", 0); // aqui estamos colocando o tempo do Cookie para 0 segundos e com valor vazio
+        CookieService.setCookie(response, "nomeUsuario", "", 0);
         return "redirect:/login";
     }
 
