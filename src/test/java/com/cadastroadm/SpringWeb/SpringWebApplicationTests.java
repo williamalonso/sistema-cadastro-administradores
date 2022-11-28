@@ -1,4 +1,4 @@
-package com.web.admin.SpringWeb;
+package com.cadastroadm.SpringWeb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

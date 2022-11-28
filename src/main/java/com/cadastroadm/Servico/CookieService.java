@@ -1,4 +1,4 @@
-package com.web.admin.Servico;
+package com.cadastroadm.Servico;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CookieService {
-    
     // Essa função é para gravar cookie
     public static void setCookie(HttpServletResponse response, String Key, String Valor, int segundos) throws IOException { // esse response é um recurso do Http onde a gente escreve alguma coisa. Nesse caso, o que vai ser escrito é o Cookie.
 

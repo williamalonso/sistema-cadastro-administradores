@@ -1,16 +1,49 @@
 <!-- Topo -->
-<div th:replace="compartilhado/topo"></div>
+<div th:replace="compartilhado/header"></div>
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-light">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	  	<div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+			<h4>Bem-vindo <span th:text="${nome}"></span></h4>
+	  		<a href="/sair" class="btn btn-outline-success" type="submit">Sair</a>
+		</div>
+	</div>
+</nav>
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Olá - <span th:text="${nome}"></span> seja muito bem vindo à sua área administrativa</h1>
-        </div>
+<div class="container mt-5 mb-5">
+	<h2>Administradores</h2>
+	<h4>Aqui é listado os administradores do meu sistema</h4>
+	<a href="/administradores/novo" class="btn btn-primary mt-5">Adicionar</a>
+</div>
 
-    </div>
-    <!-- /.container-fluid -->
+
+<!-- Table -->
+<table class="container table table-striped table-hover table-bordered">
+	<thead>
+	  <tr>
+		<th scope="col">ID</th>
+		<th scope="col">Nome</th>
+		<th scope="col">Email</th>
+		<th scope="col">Alterar</th>
+		<th scope="col">Excluir</th>
+		<th scope="col">Senha</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr th:each="adm : ${administradores}">
+		<th th:text="${adm.id}"></th>
+		<td th:text="${adm.nome}"></td>
+		<td th:text="${adm.email}"></td>
+		<td><a th:href="@{ '/administradores/' + ${adm.id} + '/buscar' }" class="btn btn-warning">Alterar</a></td>
+		<td><a href="#" th:onclick="| if(confirm('Confirma?')){ window.location.href='/administradores/${adm.id}/excluir' } |" class="btn btn-danger">Excluir</a></td> <!-- Outra forma de escrever seria th:onclick="'window.location.href = \'' + @{/administradores/{id}(id=${adm.id})} + '/excluir\''" -->
+		<td th:text="${adm.senha}"></td>
+	  </tr>
+	</tbody>
+</table>
 
 <!-- Footer -->
-<div th:replace="compartilhado/baixo"></div>
+<div th:replace="compartilhado/footer"></div>

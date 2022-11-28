@@ -1,4 +1,4 @@
-package com.web.admin.SpringWeb.models;
+package com.cadastroadm.SpringWeb.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +11,8 @@ import org.hibernate.annotations.Type;
 
 @Entity // Estamos informando que essa classe é uma Entidade. Isso significa que essa classe vai criar minha tabela no banco de dados, além de buscar dados, etc.
 @Table(name="administradores") // É opcional informar o nome da minha tabela, mas aqui vamos informar/mapear. O nome da classe fica no singular, e da tabela fica no plural
-public class Administrador {
 
+public class Administrador {
     // Aqui criamos os atributos que vão pro banco de dados
     
     @Id
@@ -76,5 +76,4 @@ public class Administrador {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
 }

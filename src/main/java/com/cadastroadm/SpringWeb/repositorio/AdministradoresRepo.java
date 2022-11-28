@@ -1,10 +1,10 @@
-package com.web.admin.SpringWeb.repositorio;
+package com.cadastroadm.SpringWeb.repositorio;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.web.admin.SpringWeb.models.Administrador;
+import com.cadastroadm.SpringWeb.models.Administrador;
 
 // Vamos usar esse arquivo para falar para o Hibernate que essa vai ser a interface responsável por tratar toda minha Entidade.
 

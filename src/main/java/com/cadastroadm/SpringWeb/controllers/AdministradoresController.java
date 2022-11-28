@@ -1,14 +1,8 @@
-package com.web.admin.SpringWeb.controllers;
+package com.cadastroadm.SpringWeb.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.web.admin.Servico.CookieService;
-import com.web.admin.SpringWeb.models.Administrador;
-import com.web.admin.SpringWeb.repositorio.AdministradoresRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,24 +12,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.cadastroadm.SpringWeb.models.Administrador;
+import com.cadastroadm.SpringWeb.repositorio.AdministradoresRepo;
 
 @Controller
 public class AdministradoresController {
-
+    
     @Autowired // toda vez que precisarmos utilizar a interface 'AdministradoresRepo', vai ser criada uma nova instância dela automaticamente
     private AdministradoresRepo repo; // variável do tipo AdministradoresRepo (interface) que usa funções prontas de CRUD
 
-
-    @RequestMapping("/administradores") // quando a url for '/administradores'. Também poderia ser @GetMapping
-    public String index(Model model, HttpServletRequest request) throws UnsupportedEncodingException { //esse "Model model" faz com que a gente possa adicionar dados que vamos enviar para nosso template html
+    @RequestMapping("/") // quando a url for '/administradores'. Também poderia ser @GetMapping
+    public String index(Model model) throws UnsupportedEncodingException { //esse "Model model" faz com que a gente possa adicionar dados que vamos enviar para nosso template html
 
         List<Administrador> administradores = (List<Administrador>)repo.findAll(); // a variável "administradores" é do tipo List, ou seja, na verdade é uma lista e não variável, e busca todos os dados do Banco. O "List<Administrador>" na direita é um casting para ele trazer os resultados de findAll() e converter para o tipo List.
 
         model.addAttribute("administradores", administradores); // O primeiro atributo "administradores" é o atributo que vamos enviar para o html. O segundo parâmetro que vamos enviar é uma lista com os dados do Banco
-        model.addAttribute("nome", CookieService.getCookie(request, "nomeUsuario"));
+        // model.addAttribute("nome", CookieService.getCookie(request, "nomeUsuario"));
 
-        return "administradores/index";
+        return "home/index";
     }
 
     @RequestMapping("/administradores/novo") // também poderia ser @GetMapping
@@ -47,14 +41,14 @@ public class AdministradoresController {
     @PostMapping("/administradores/criar")
     public String criar(Administrador administrador) { // usando o "Administrador administrador" o Spring já pega os dados do formulário e converte para um objeto do tipo Administrador, pronto para uso.
         repo.save(administrador); // aqui estamos salvando o objeto "administrador" no Banco, usando a variável "repo" declarada lá em cima
-        return "redirect:/administradores"; // após salvar, redireciona para minha lista (tabela do html)
+        return "redirect:/"; // após salvar, redireciona para minha lista (tabela do html)
     }
 
     // Função que exclui
     @GetMapping("/administradores/{id}/excluir")
     public String excluir(@PathVariable int id) { // o PathVariable faz com que eu possa receber o id
         repo.deleteById(id); // deleta o dado no Banco
-        return "redirect:/administradores";
+        return "redirect:/";
     }
 
     // Função que busca dados de um ID
@@ -68,7 +62,7 @@ public class AdministradoresController {
 
         } catch(Exception err) {
 
-            return "redirect:/administradores";
+            return "redirect:/";
 
         }
         return "/administradores/editar"; // retorna para o html editar.html na pasta "administradores"
@@ -85,11 +79,12 @@ public class AdministradoresController {
 
         // usando um método CRUD já existente
         if(!repo.existsById(id)) { // Se não existir o 'id' no Banco, redireciona para a página principal.
-            return "redirect:/administradores";
+            return "redirect:/";
         }
 
         repo.save(administrador);  // Se estiver tudo ok, atualizamos o objeto no Banco
-        return "redirect:/administradores";
+        return "redirect:/";
         
     }
+    
 }
