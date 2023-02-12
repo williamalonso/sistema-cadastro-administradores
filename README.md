@@ -55,7 +55,7 @@ Caso queira, clone ou faça o downlod desse repositório:
 $ git clone git@github.com:williamalonso/sistema-cadastro-eventos.git
 ```
 
-Para rodar a aplicação, digite o comando `./mvnw spring-boot:run` no terminal e depois acesse a url `http://localhost:8080/`
+Para rodar a aplicação no VSCode, digite o comando `./mvnw spring-boot:run` no terminal e depois acesse a url `http://localhost:8080/`
 
 É importante instalar a extensão chamada "Extension pack for Java" no VSCode para poder rodar a aplicação.
 
