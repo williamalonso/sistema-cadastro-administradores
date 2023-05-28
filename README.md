@@ -44,7 +44,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O sistema foi desenvolvido usando o Visual Studio Code e o Java versão `1.8.0_333`.
 
-A versão do SpringBoot usada é a `2.6.12`.
+A versão do SpringBoot usada é a `2.7.6`.
 
 A versão do Mysql usada é a `8.0.30`.
 
