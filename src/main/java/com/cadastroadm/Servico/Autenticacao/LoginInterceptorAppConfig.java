@@ -1,14 +1,15 @@
 package com.cadastroadm.Servico.Autenticacao;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration // Estamos colocando uma configuração no sistema
-public class LoginInterceptorAppConfig extends WebMvcConfigurerAdapter {
+public class LoginInterceptorAppConfig implements WebMvcConfigurer {
      // Essa classe faz uma configuração de filtros que ele vai passar antes de cada ação. A cada requisição que eu fizer, vamos passar primeiro por esse interpretador.
     
      
+    @Override 
      public void addInterceptors(InterceptorRegistry registry) {
          
         registry.addInterceptor(new LoginInterceptor())
